@@ -1,0 +1,89 @@
+*, html, body {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    position: relative;
+    display: grid;
+    width: 980px;
+    height: 100vh;
+    background-color: #222;
+    margin: 0 auto;
+}
+
+
+#handle {
+    display: inline-block;
+    margin: auto;
+    opacity: 0;
+    
+}
+
+#label{
+    position: absolute;
+    height: 50px;
+    width: 30px;
+    background-color: #999;
+    border-radius: 5px;
+    top: 52%;
+    right: 48.5%;
+
+}
+
+.saber{
+    position: absolute;
+    height: 200px;
+    width: 12px;
+    /* display: none; */
+    background-color: blue;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    top: calc(52% - 200px);
+    right: calc(48.5% + 9px);
+    opacity: 0;
+    transition: all 0.3s linear;
+
+}
+
+#label::before{
+    position: absolute;
+    content: "OFF";
+    display: inline-block;
+    background: white;
+    height: 30px;
+    width: 20px;
+    font-size: 0.5rem;
+    font-weight: bold;
+    color:red;
+    text-align: center;
+    line-height: 2.5rem;
+    top: calc(50% - 15px);
+    right: calc(50% - 10px);
+    transition: all 0.3s linear;
+
+}
+
+
+
+#handle:checked ~ .saber{
+    /* display: block; */
+    opacity: 1;
+    
+} 
+
+#handle:checked ~ #label::before{
+    content: "ON";
+    color: blue;
+    line-height: 1.2rem;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+.yellow{
+    background-color: yellow;
+}

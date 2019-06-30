@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="wrapper">
+         
+         <input type="checkbox" id="handle" class="handle">
+         <label for="handle" id="label"></label>
+            
+         <div class="saber"></div> 
+    </div>
+    <script>
+    const audio = document.createElement("audio");
+    const handle = document.querySelector("#handle");
+    handle.addEventListener('change', playAudio);
+    function playAudio(e){
+        console.log(e);
+        if (e.target.checked){
+            audio.src = "boom.wav";
+            audio.play();
+
+            let saber = e.target.parentElement.lastElementChild;
+
+            let count = 0;
+            setInterval(function(e){
+                count ++
+                if (count % 3 == 0){
+                    saber.classList.toggle('green');
+                    
+                }else if(count % 3 == 1){
+                    saber.classList.toggle('red');
+                }else{
+                    saber.classList.toggle('yellow');
+                }
+                
+            }, 600)
+            
+        }else{
+            audio.src = "tink.wav";
+            audio.play();
+        }
+    }
+    </script>
+</body>
+</html>

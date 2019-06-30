@@ -1,0 +1,5 @@
+Click to turn lightSaber on and off
+
+1) added sound
+
+2) Added an On/Off switch
