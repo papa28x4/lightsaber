@@ -17,36 +17,53 @@
          <div class="saber"></div> 
     </div>
     <script>
+
     const audio = document.createElement("audio");
+    const audio2 = document.createElement("audio");
     const handle = document.querySelector("#handle");
     handle.addEventListener('change', playAudio);
     function playAudio(e){
         console.log(e);
         if (e.target.checked){
             audio.src = "boom.wav";
+            audio2.src = "light_sabre.mp3"
             audio.play();
-
+            audio2.play();
+            audio2.loop = true;
             let saber = e.target.parentElement.lastElementChild;
-
-            let count = 0;
-            setInterval(function(e){
-                count ++
-                if (count % 3 == 0){
-                    saber.classList.toggle('green');
-                    
-                }else if(count % 3 == 1){
-                    saber.classList.toggle('red');
-                }else{
-                    saber.classList.toggle('yellow');
-                }
-                
-            }, 600)
+            toggleColor(saber);
+            
             
         }else{
-            audio.src = "tink.wav";
-            audio.play();
+            audio2.src = "tink.wav";
+            audio2.play();
+            audio2.loop = false;
         }
     }
+
+    function toggleColor(elem){
+            let count = 0;
+            let colorTimer = setInterval(function(e){
+            count++
+                if (count >= 3){
+                    count = 0;
+                }
+                if (count % 3 == 0){
+                    elem.classList.toggle('green');
+                }else if(count % 3 == 1){
+                    elem.classList.toggle('red');
+                }else{
+                    elem.classList.toggle('yellow');
+                }
+                
+                let target = elem.parentElement.firstElementChild;
+                
+                if(!target.checked){
+                    clearInterval(colorTimer);
+                }
+            }, 400)
+    }
+
     </script>
 </body>
 </html>
